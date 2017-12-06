@@ -8,5 +8,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::resource("/budgets","BudgetsController");
-Route::resource("/budget-categories","BudgetCategoriesController");
+Route::resource("/budgets", "BudgetsController");
+Route::resource("/budget-categories", "BudgetCategoriesController");
+Route::resource("budget-items", "BudgetItemsController");

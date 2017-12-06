@@ -1,7 +1,7 @@
 <template>	
 	<div class="row root">
 		<div class="col-md-3">
-			<BudgetCategories></BudgetCategories>
+			<Categories></Categories>
 		</div>
 		<div class="col-md-9">
 			<BudgetTable></BudgetTable>
@@ -11,14 +11,14 @@
 </template>
 
 <script>
-import BudgetCategories from "./BudgetCategories";
+import Categories from "./Categories";
 import BudgetTable from "./BudgetTable";
 
 	export default{
 		
-		components:{BudgetCategories,BudgetTable},
+		components:{Categories,BudgetTable},
 		mounted(){
-			this.$store.commit("loadBudget",this.data);
+			this.$store.commit("budget/load",this.data);
 		},
 
 		props:['data']
@@ -28,5 +28,5 @@ import BudgetTable from "./BudgetTable";
 <style scoped>
 	.root{
 		position: relative;
-	}
+			}
 </style>

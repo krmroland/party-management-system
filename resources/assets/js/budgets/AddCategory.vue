@@ -4,7 +4,7 @@
             <div class="input-group">
                 <input type="text" class="form-control" placeholder="Category name" v-model="name">
                 <div class="btn-group">
-                    <button class="btn btn-outline-primary" 
+                    <button class="btn btn-primary" 
                             :disabled="!name" @click.stop="save">
                         <i class="fa fa-save"></i>
                     </button>
@@ -14,7 +14,7 @@
                 </div>
             </div>
         </div>
-        <button class="btn btn-outline-primary btn-block" v-else @click="isAdding=true">
+        <button class="btn btn-primary btn-block" v-else @click="isAdding=true">
             <i class="fa fa-plus"></i> New Category
         </button>
     </div>
@@ -37,11 +37,11 @@ export default {
         save() {
             axios
                 .post("/budget-categories", {
-                    name: this.name
+                    name: this.name.toLowerCase()
                 })
                 .then(({ data }) => {
                     this.cancel();
-                    this.$store.commit("loadBudget",data);
+                    this.$store.commit("budget/load",data);
                     flash.info("Category was added successfully");
                 }).catch(({response})=>{
                     this.handleErrors(response.data);

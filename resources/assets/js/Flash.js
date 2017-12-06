@@ -22,6 +22,14 @@ class Flash {
 			text
 		});
 	}
+	html(html,title="Great",type='info'){
+		swal({
+			type,
+			title,
+			html
+		})
+	}
+
 }
 
 export { Flash };

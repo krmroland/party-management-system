@@ -1,6 +1,6 @@
 <template>
     <div class="root">
-        <h5 class="text-center">Available Categories</h5>
+        <h5 class="text-center p-2">Available Categories</h5>
         <AddCategory></AddCategory>
         <div class="list-group">
             <CategoryItem :category="{isActive:false, name:'All'}" :id="-1">
@@ -20,7 +20,7 @@ export default {
 
     computed:{
         categories(){
-            return this.$store.state.budgetCategories
+            return this.$store.state.budget.categories
         }
     }
 

@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class BudgetCategory extends BaseModel
 {
+    /**
+     * a budget category has many items
+     *
+     * @return     Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function items()
     {
         return $this->hasMany(BudgetItem::class);
@@ -14,7 +19,7 @@ class BudgetCategory extends BaseModel
     /**
      * get all budegt categories with all their items
      *
-     * @return     Collection All.
+     * @return     Illuminate\Support\Collection All.
      */
     public static function getAll()
     {

@@ -13,14 +13,14 @@ export default{
 	computed:{
 
 		isActive(){
-			return this.$store.state.activeBudgetCategogryId === this.id;
+			return this.$store.state.budget.activeId === this.id;
 		}
 	},
 	props:["category","id"],
 	methods:{
 		activate(){
 
-			this.$store.commit("activateCategory",this.id);
+			this.$store.commit("budget/activate",this.id);
 
 		}
 	}
@@ -30,6 +30,8 @@ export default{
 <style lang="scss" scoped>
 @import "resources/assets/sass/variables";
 .is-active{
-	border-right:3px solid theme-color('primary');
+	border-right:6px solid theme-color('primary');
+	color:theme-color('primary');
+	font-weight:bold;
 }
 </style>

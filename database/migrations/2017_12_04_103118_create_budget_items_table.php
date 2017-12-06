@@ -15,12 +15,13 @@ class CreateBudgetItemsTable extends Migration
     {
         Schema::create('budget_items', function (Blueprint $table) {
             $table->string("name");
-            $table->integer("qty")->unsigned();
-            $table->integer("unitCost")->unsigned();
+            $table->integer("qty")->unsigned()->nullable();
+            $table->integer("unitCost")->unsigned()->nullable();
+            $table->string("qtyUnits")->nullable();
             $table->integer("total")->unsigned();
             $table->integer("budget_category_id")->unsigned()->index();
             $table->boolean("isCovered")->default(false);
-            $table->text("remarks");
+            $table->text("remarks")->nullable();
             $table->timestamps();
         });
     }
