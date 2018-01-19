@@ -3,7 +3,7 @@ import capitalize from "lodash/capitalize";
 export default Vue.mixin({
     filters: {
         currency(value) {
-            return value === null ? null : numeral(value).format();
+            return value ? null : numeral(value).format();
         },
         capitalize(value) {
             return capitalize(value);

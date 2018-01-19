@@ -8,13 +8,14 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Budget Simplifier Management System</title>
 
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
-    <div id="app" class="container-fluid">
+<body class="app">
+    <div id="app">
+     <body-skelton></body-skelton>
         @include('layouts.nav')
         @yield('content')
     </div>

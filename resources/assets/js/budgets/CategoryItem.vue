@@ -13,14 +13,14 @@ export default{
 	computed:{
 
 		isActive(){
-			return this.$store.state.budget.activeId === this.id;
+			return this.$store.state.budget.activeCategoryId === this.id;
 		}
 	},
 	props:["category","id"],
 	methods:{
 		activate(){
 
-			this.$store.commit("budget/activate",this.id);
+			this.$store.commit("budget/activateCategory",this.id);
 
 		}
 	}

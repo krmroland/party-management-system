@@ -16,11 +16,15 @@
 				<tbody>
 					<template v-for="category,index in categories">
 						<tr class="header">
-							<th class="text-center">{{String.fromCharCode(index+65)}}.</th>
+							<th class="text-center">{{letter(index)}}.</th>
 							<th colspan="5">{{category.name}}</th>
 						</tr>
 						<template v-for="item,index in category.items">
-							<TableRow :item="item" :index="index"></TableRow>
+							<TableRow 
+								:item="item" 
+								:index="index" 
+								@clicked="activateItem">
+							</TableRow>
 						</template>
 						
 					</template>
@@ -29,10 +33,11 @@
 				<tfoot>
 					<tr>
 						<th class="text-right" colspan="4">Total</th>
-						<th colspan="2">{{ total }}</th>
+						<th colspan="2">{{ total|currency }}</th>
 					</tr>
 				</tfoot>
 			</table>
+		
 		</div>
 
 	</div>
@@ -42,15 +47,31 @@
 <script>
 import AddItem from "./AddItem";
 import TableRow from "./TableRow";
+
 export default
 {
 	components:{AddItem,TableRow},
 
+	methods:{
+		activateItem(item){
+			this.$store.commit("budget/activateItem",item.id)
+		},
+		itemDeleted(){	
+			this.item={};
+			this.isShowingDetail=false;
+		},
+		letter(index){
+			if (index>0 && index<26) {
+				return String.fromCharCode(Number(index)+64);
+			}
+			return index;
+			
+		}
+	},
+
 	computed:{
 		categories(){
-
 			return this.$store.getters["budget/selectedCategories"];
-
 		},
 		allIsSelected(){
 			return this.$store.getters["budget/allIsSelected"]

@@ -14,9 +14,8 @@ class BudgetsController extends Controller
      */
     public function index()
     {
-        $data=BudgetCategory::getAll();
-
-        return view("budgets.index",compact("data"));
+        $data=BudgetCategory::getAll(0);
+        return view("budgets.index", compact("data"));
     }
 
     /**
@@ -43,10 +42,10 @@ class BudgetsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Budget  $budget
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Budget $budget)
+    public function show($id)
     {
         //
     }
@@ -54,10 +53,10 @@ class BudgetsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Budget  $budget
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Budget $budget)
+    public function edit($id)
     {
         //
     }
@@ -66,10 +65,10 @@ class BudgetsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Budget  $budget
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Budget $budget)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -77,10 +76,10 @@ class BudgetsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Budget  $budget
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Budget $budget)
+    public function destroy($id)
     {
         //
     }

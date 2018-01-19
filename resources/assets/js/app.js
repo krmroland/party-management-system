@@ -1,11 +1,30 @@
 import "./bootstrap";
 import store from "./store";
-window.Vue = require("vue");
+
 import helpers from "./helpers";
-Vue.component("Budget", require("./budgets/BudgetComponent"));
-Vue.component("modal", require("./components/modal"));
+import "./charts";
+
+import "./components";
+
+import "./icons";
+
 new Vue({
     el: "#app",
     store,
     mixins: [helpers]
+});
+
+autosize(document.querySelectorAll("textarea"));
+
+const links = document.querySelectorAll(".navbar .nav-link");
+
+const cleanLink = function cleanLinkFunction(link) {
+    return link.replace(/^\//, "");
+};
+const href = cleanLink(location.pathname);
+
+links.forEach(link => {
+    href.includes(cleanLink(link.pathname))
+        ? link.classList.add("active")
+        : null;
 });
